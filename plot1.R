@@ -11,14 +11,14 @@ unzip("../consumption.zip")
 
 data <- read.csv(file="../household_power_consumption.txt", nrows = 10, na.strings = "?", sep=";",  header = TRUE)
 classes <- sapply(data,class)
-table <- read.csv("../household_power_consumption.txt", sep = ";", nrows = 2075259,na.strings = "?", comment.char = " ", colClasses = classes.filtered)
+table <- read.csv("../household_power_consumption.txt", sep = ";", nrows = 2075259,na.strings = "?", comment.char = " ", colClasses = classes)
 
 ## Approximate Memory Size 
  fileMB <- 2075259*9*8 / 2^20
  
  table$Date <- dmy(table$Date)
  DayInFeb <-  filter(table,Date >= mdy("2,1,2007"), Date<= mdy("2,2,2007"))
- 
+  
  ## hist(DayInFeb$Global_active_power,xlab="Global Active Power (Kilowatts)", ylab="Frequency", main = "Global Active Power", col="red")
  ## send to png device
  png(filename = "plot1.png",width = 480, height = 480)
